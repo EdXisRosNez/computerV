@@ -1,31 +1,31 @@
 #!/bin/bash
 
-# start.sh - Script de inicialización y despliegue rápido para MoodMeter
+# start.sh - Script de inicialización y despliegue rápido para el Sistema de Asistencia
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$DIR"
 
 echo "=========================================================="
-echo "          INICIANDO PIPELINE DE MOODMETER 📊🎭            "
+echo "    INICIANDO SISTEMA DE ASISTENCIA CON RECONOCIMIENTO    "
 echo "=========================================================="
 echo ""
 
-# Validar y crear entorno virtual venv si no existe
-if [ ! -d "venv" ]; then
-    echo "[!] Entorno virtual 'venv' no detectado. Creándolo e instalando dependencias..."
-    python3 -m venv venv
-    source venv/bin/activate
+# Validar y crear entorno virtual .venv si no existe
+if [ ! -d ".venv" ]; then
+    echo "[!] Entorno virtual '.venv' no detectado. Creándolo e instalando dependencias..."
+    python3 -m venv .venv
+    source .venv/bin/activate
     pip install --upgrade pip
     pip install -r requirements.txt
 else
-    echo "[x] Entorno virtual 'venv' detectado. Activándolo..."
-    source venv/bin/activate
+    echo "[x] Entorno virtual '.venv' detectado. Activándolo..."
+    source .venv/bin/activate
 fi
 
 echo ""
 echo "[*] Servidor FastAPI arrancando de forma local en http://127.0.0.1:8000"
-echo "[*] Abre tu navegador web en esa dirección para ver tu MoodMeter."
+echo "[*] Abre tu navegador web en esa dirección para acceder al sistema."
 echo "[!] Nota: La primera vez que el backend realice un análisis, DeepFace"
-echo "    descargará automáticamente el modelo convolucional de emociones (~20MB)."
+echo "    descargará automáticamente los modelos preentrenados."
 echo "    Esto se realiza una sola vez de forma interna."
 echo ""
 echo "Presiona Ctrl+C para detener el servidor."
